@@ -1,7 +1,16 @@
-import './App.css'
+import { RouterProvider } from 'react-router-dom'
+import { router } from '@router/router.tsx'
+import { ResetStyle } from '@styles/resetStyle.ts'
+import { theme } from '@styles/theme.ts'
+import { ThemeProvider } from 'styled-components'
 
-function App() {
-  return <div />
+export default function App() {
+  return (
+    <>
+      <ResetStyle />
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </>
+  )
 }
-
-export default App
