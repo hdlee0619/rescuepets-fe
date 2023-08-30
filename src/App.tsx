@@ -1,7 +1,7 @@
-import './App.css'
+import Main from '@pages/Main.tsx'
 
 function App() {
-  return <div />
+  return <Main />
 }
 
 export default App
