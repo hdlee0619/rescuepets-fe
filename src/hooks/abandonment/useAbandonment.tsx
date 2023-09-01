@@ -26,6 +26,7 @@ const fetchPublicData = async () => {
   )
     .then(response => response.json())
     .catch(error => new Error(error))
+
   return response.body.items.item.map(
     (item: abandonmentResponseTypes) => new ConvertAbandonment(item)
   )
