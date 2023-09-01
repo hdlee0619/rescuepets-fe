@@ -30,6 +30,7 @@
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
       "@_types/*": ["src/types/*"],
+      "@models/*": ["src/models/*"]
     }
   },
   "include": ["src"],

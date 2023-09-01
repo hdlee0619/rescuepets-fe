@@ -16,7 +16,7 @@ type abandonmentResponseTypes = {
   neuterYn: string
   specialMark: string
   careNm: string
-  CareTel: string
+  careTel: string
   careAddr: string
   orgNm: string
   chargeNm: string
