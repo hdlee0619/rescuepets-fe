@@ -2,14 +2,14 @@ import dayjs from 'dayjs'
 import { abandonmentResponseTypes } from '@_types/abandonmentType.ts'
 
 export class ConvertAbandonment {
-  readonly remoteAbandonment: abandonmentResponseTypes
+  readonly publicAbandonment: abandonmentResponseTypes
 
-  constructor(remoteAbandonment: abandonmentResponseTypes) {
-    this.remoteAbandonment = remoteAbandonment
+  constructor(publicAbandonment: abandonmentResponseTypes) {
+    this.publicAbandonment = publicAbandonment
   }
 
   private changeSpeciesWord = (): string => {
-    const species: string = this.remoteAbandonment.kindCd.split(']')[0].slice(1)
+    const species: string = this.publicAbandonment.kindCd.split(']')[0].slice(1)
     if (species === '개') {
       return '강아지'
     }
@@ -18,21 +18,21 @@ export class ConvertAbandonment {
 
   get kind(): { species: string; type: string } {
     const species = this.changeSpeciesWord()
-    const type = this.remoteAbandonment.kindCd.split(']')[1]
+    const type = this.publicAbandonment.kindCd.split(']')[1]
     return { species, type }
   }
 
   get summaryData(): string {
     let neutralization
-    if (this.remoteAbandonment.neuterYn === 'Y') {
+    if (this.publicAbandonment.neuterYn === 'Y') {
       neutralization = '중성화O'
-    } else if (this.remoteAbandonment.neuterYn === 'N') {
+    } else if (this.publicAbandonment.neuterYn === 'N') {
       neutralization = '중성화X'
-    } else if (this.remoteAbandonment.neuterYn === 'U') {
+    } else if (this.publicAbandonment.neuterYn === 'U') {
       neutralization = '중성화?'
     }
-    const { weight } = this.remoteAbandonment
-    const { colorCd } = this.remoteAbandonment
+    const { weight } = this.publicAbandonment
+    const { colorCd } = this.publicAbandonment
 
     return `${neutralization}/${weight}/${colorCd}`
   }
@@ -42,9 +42,9 @@ export class ConvertAbandonment {
     startDate: string
     endDate: string
   } {
-    const happenDate = dayjs(this.remoteAbandonment.happenDt).format('YY.MM.DD')
-    const startDate = dayjs(this.remoteAbandonment.noticeSdt).format('YY.MM.DD')
-    const endDate = dayjs(this.remoteAbandonment.noticeEdt).format('YY.MM.DD')
+    const happenDate = dayjs(this.publicAbandonment.happenDt).format('YY.MM.DD')
+    const startDate = dayjs(this.publicAbandonment.noticeSdt).format('YY.MM.DD')
+    const endDate = dayjs(this.publicAbandonment.noticeEdt).format('YY.MM.DD')
 
     return { happenDate, startDate, endDate }
   }
