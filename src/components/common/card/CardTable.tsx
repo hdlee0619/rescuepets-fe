@@ -1,25 +1,16 @@
-// React & Library stuff
-
-// graphQL stuff
-
-// type stuff
-import { abandonmentResponseTypes } from '@_types/abandonment.ts'
-
-// react component stuff
-import Card from '@components/common/card/Card.tsx'
+import { ConvertAbandonment } from '@models/ConvertAbandonment.ts'
 import Container from '@layouts/Container.tsx'
-
-// etc stuff
+import Card from '@components/common/card/Card.tsx'
 
 type CardTable = {
-  array: abandonmentResponseTypes[]
+  cardInfo: ConvertAbandonment[]
 }
 
-export default function CardTable({ array }: CardTable) {
+export default function CardTable({ cardInfo }: CardTable) {
   return (
     <Container>
-      {array.map(item => {
-        return <Card key={item.desertionNo} item={item} />
+      {cardInfo.map(item => {
+        return <Card key={item.remoteAbandonment.desertionNo} item={item} />
       })}
     </Container>
   )

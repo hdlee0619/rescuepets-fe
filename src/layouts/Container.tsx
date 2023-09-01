@@ -1,23 +1,19 @@
-// React Library stuff
 import { ReactNode } from 'react'
-import { styled } from 'styled-components'
+import { CSSProp, styled } from 'styled-components'
 
-// graphQL stuff
-
-// type stuff
 type ContainerProps = {
   children: ReactNode
+  $sx?: CSSProp
+}
+Container.defaultProps = {
+  $sx: undefined,
 }
 
-// react component stuff
-
-// etc stuff
-
-export default function Container({ children }: ContainerProps) {
-  return <ContainerDiv>{children}</ContainerDiv>
+export default function Container({ children, $sx }: ContainerProps) {
+  return <ContainerDiv $sx={$sx}>{children}</ContainerDiv>
 }
 
-const ContainerDiv = styled.div`
+const ContainerDiv = styled.div<{ $sx?: CSSProp }>`
   margin: 0 auto 0 auto;
   max-width: 1280px;
   @media ${({ theme }) => theme.breakpoint.laptop} {
@@ -30,4 +26,5 @@ const ContainerDiv = styled.div`
     max-width: 375px;
     padding: 0 16px 0 16px;
   }
+  ${({ $sx }) => $sx && $sx}}
 `
