@@ -29,6 +29,7 @@ const CardStyle = css`
   border-radius: 8px;
   width: 134px;
   height: 224px;
+  cursor: pointer;
 
   @media (min-width: ${({ theme }) => theme.screen.md}) {
     width: 164px;
