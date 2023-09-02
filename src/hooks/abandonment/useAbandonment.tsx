@@ -21,7 +21,7 @@ const fetchPublicData = async () => {
     'http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic'
 
   const { response } = await fetch(
-    `${URL}?pageNo=1&numOfRows=10&_type=json&serviceKey=${ABANDONMENT_PUBLIC_KEY}`,
+    `${URL}?pageNo=2&numOfRows=100&_type=json&serviceKey=${ABANDONMENT_PUBLIC_KEY}`,
     { method: 'GET' }
   )
     .then(response => response.json())
