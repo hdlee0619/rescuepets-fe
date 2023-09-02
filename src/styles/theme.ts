@@ -34,6 +34,7 @@ const color = {
     tertiary: '#F2F2F7',
   },
   status: {
+    main: '#171717',
     alert: '#714FD1',
     caution: '#D6459C',
     positive: '#005247',

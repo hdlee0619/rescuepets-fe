@@ -19,6 +19,7 @@ export class ConvertAbandonment {
   get kind(): { species: string; type: string } {
     const species = this.changeSpeciesWord()
     const type = this.publicAbandonment.kindCd.split(']')[1]
+
     return { species, type }
   }
 
@@ -47,5 +48,9 @@ export class ConvertAbandonment {
     const endDate = dayjs(this.publicAbandonment.noticeEdt).format('YY.MM.DD')
 
     return { happenDate, startDate, endDate }
+  }
+
+  get summaryLocation(): string {
+    return this.publicAbandonment.careAddr.split(' ').slice(0, 2).join(' ')
   }
 }
