@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { abandonmentResponseTypes } from '@_types/abandonmentType.ts'
 import { ConvertAbandonment } from '@models/ConvertAbandonment.ts'
 
-export default function useAbandonment(initialState: never[]) {
+export default function useFetchAbandonment(initialState: []) {
   const [abandonmentArray, setAbandonmentArray] =
     useState<ConvertAbandonment[]>(initialState)
 
@@ -21,7 +21,7 @@ const fetchPublicData = async () => {
     'http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic'
 
   const { response } = await fetch(
-    `${URL}?pageNo=2&numOfRows=100&_type=json&serviceKey=${ABANDONMENT_PUBLIC_KEY}`,
+    `${URL}?pageNo=1&numOfRows=12&_type=json&serviceKey=${ABANDONMENT_PUBLIC_KEY}`,
     { method: 'GET' }
   )
     .then(response => response.json())
