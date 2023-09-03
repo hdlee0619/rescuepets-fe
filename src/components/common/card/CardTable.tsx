@@ -5,19 +5,19 @@ import Card from '@components/common/card/Card.tsx'
 import Grid from '@components/elements/Grid.tsx'
 
 type CardTable = {
-  cardInfo: ConvertAbandonment[]
+  dataArray: ConvertAbandonment[]
 }
 
-export default function CardTable({ cardInfo }: CardTable) {
+export default function CardTable({ dataArray }: CardTable) {
   return (
     <Container>
       <Grid $containerSx={GridContainerStyle}>
-        {cardInfo.map(item => {
+        {dataArray.map(item => {
           return (
             <Card
               key={item.publicAbandonment.desertionNo}
+              imgAlt={item.imgAlt}
               item={item}
-              imgAlt="유기 동물"
             />
           )
         })}
