@@ -2,9 +2,9 @@ import dayjs from 'dayjs'
 import { abandonmentResponseTypes } from '@_types/abandonmentType.ts'
 
 export class ConvertAbandonment {
-  readonly publicAbandonment: abandonmentResponseTypes
+  public readonly publicAbandonment: abandonmentResponseTypes
 
-  constructor(publicAbandonment: abandonmentResponseTypes) {
+  public constructor(publicAbandonment: abandonmentResponseTypes) {
     this.publicAbandonment = publicAbandonment
   }
 
@@ -16,14 +16,14 @@ export class ConvertAbandonment {
     return species
   }
 
-  get kind(): { species: string; type: string } {
+  public get kind(): { species: string; type: string } {
     const species = this.changeSpeciesWord()
     const type = this.publicAbandonment.kindCd.split(']')[1]
 
     return { species, type }
   }
 
-  get summaryData(): string {
+  public get summaryData(): string {
     let neutralization
     if (this.publicAbandonment.neuterYn === 'Y') {
       neutralization = '중성화O'
@@ -38,7 +38,7 @@ export class ConvertAbandonment {
     return `${neutralization}/${weight}/${colorCd}`
   }
 
-  get convertDate(): {
+  public get convertDate(): {
     happenDate: string
     startDate: string
     endDate: string
@@ -50,7 +50,11 @@ export class ConvertAbandonment {
     return { happenDate, startDate, endDate }
   }
 
-  get summaryLocation(): string {
+  public get summaryLocation(): string {
     return this.publicAbandonment.careAddr.split(' ').slice(0, 2).join(' ')
+  }
+
+  public get imgAlt(): string {
+    return this.publicAbandonment.kindCd
   }
 }
