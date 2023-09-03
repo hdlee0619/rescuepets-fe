@@ -1,6 +1,6 @@
 import { css } from 'styled-components'
 import { ConvertAbandonment } from '@models/ConvertAbandonment.ts'
-import Container from '@layouts/Container.tsx'
+import Container from '@components/elements/Container.tsx'
 import Card from '@components/common/card/Card.tsx'
 import Grid from '@components/elements/Grid.tsx'
 
