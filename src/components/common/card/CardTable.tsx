@@ -29,6 +29,7 @@ export default function CardTable({ dataArray }: CardTable) {
 const GridContainerStyle = css`
   place-items: center;
   grid-template-columns: repeat(2, 1fr);
+  padding: 16px 0 16px 0;
 
   @media (min-width: ${({ theme }) => theme.screen.md}) {
     grid-template-columns: repeat(4, 1fr);
